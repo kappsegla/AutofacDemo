@@ -9,12 +9,26 @@ namespace AutofacDemo
     class TextEditor
     {
         private ISpellChecker _spellChecker;
-        private IStorage _storage;
+        private Lazy<IStorage> _storage;
+        private Func<ITextRow> _textRow;
 
-        public TextEditor(ISpellChecker spellChecker, IStorage storage)
+        public TextEditor(ISpellChecker spellChecker, Lazy<IStorage> storage, Func<ITextRow> textRow)
         {
            _spellChecker = spellChecker;
            _storage = storage;
+            _textRow = textRow;
+        }
+
+        public void M()
+        {
+            Console.WriteLine(_storage.Value.Uri.AbsolutePath);
+
+            for(int i = 0; i < 3; i++)
+            {
+                var row = _textRow();
+                row.text = "i";
+            }
+
         }
     }
 }
