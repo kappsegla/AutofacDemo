@@ -11,10 +11,12 @@ namespace AutofacDemo
     {
         static void Main(string[] args)
         {
-           // var builder = new ContainerBuilder();
+            var builder = new ContainerBuilder();
+            builder.RegisterType<TextEditor>();
+           
+            builder.RegisterType<SpellChecker>().As<ISpellChecker>();
 
-           // builder.RegisterType<TextEditor>();
-           // builder.RegisterType<SpellChecker>().As<ISpellChecker>();
+            
 
       
 
