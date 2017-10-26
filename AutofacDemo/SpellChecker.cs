@@ -4,7 +4,7 @@ namespace AutofacDemo
 {
     public class SpellChecker : ISpellChecker
     {
-        public SpellChecker(string input)
+        public SpellChecker()
         {
             Console.WriteLine("SpellChecker constructor");
         }

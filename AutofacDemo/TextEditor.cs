@@ -25,7 +25,7 @@ namespace AutofacDemo
 
             for(int i = 0; i < 3; i++)
             {
-                var row = _textRow("Default text" + i);
+                var row = _textRow("Martin");
                 Console.WriteLine(row.text);
             }
 

@@ -10,12 +10,12 @@ namespace AutofacDemo
     {
         public ISpellChecker createSpellChecker()
         {
-            return new SpellChecker("");
+            return new SpellChecker();
         }
 
         public ISpellChecker createSpellChecker(string input)
         {
-            return new SpellChecker(input);
+            return new SpellChecker();
         }
 
 

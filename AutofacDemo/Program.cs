@@ -25,9 +25,9 @@ namespace AutofacDemo
 
 
 
-            ISpellChecker spellChecker = new SpellChecker();
+            //ISpellChecker spellChecker = new SpellChecker();
 
-            ISpellChecker spellChecker2 = new SpellCheckerFactory().createSpellChecker();
+            //ISpellChecker spellChecker2 = new SpellCheckerFactory().createSpellChecker();
 
 
             textEditor.M();
