@@ -4,9 +4,10 @@ namespace AutofacDemo
 {
     public class TextRow : ITextRow
     {
-        public TextRow()
+        public TextRow(string defaultText)
         {
             Console.WriteLine("TextRow constructor");
+            text = defaultText;
         }
         public string text { get; set; }
     }

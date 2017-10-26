@@ -10,9 +10,9 @@ namespace AutofacDemo
     {
         private ISpellChecker _spellChecker;
         private Lazy<IStorage> _storage;
-        private Func<ITextRow> _textRow;
+        private Func<string, ITextRow> _textRow;
 
-        public TextEditor(ISpellChecker spellChecker, Lazy<IStorage> storage, Func<ITextRow> textRow)
+        public TextEditor(ISpellChecker spellChecker, Lazy<IStorage> storage, Func<string, ITextRow> textRow)
         {
            _spellChecker = spellChecker;
            _storage = storage;
@@ -25,8 +25,8 @@ namespace AutofacDemo
 
             for(int i = 0; i < 3; i++)
             {
-                var row = _textRow();
-                row.text = "i";
+                var row = _textRow("Default text" + i);
+                Console.WriteLine(row.text);
             }
 
         }
