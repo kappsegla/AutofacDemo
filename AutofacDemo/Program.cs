@@ -15,6 +15,7 @@ namespace AutofacDemo
             builder.RegisterType<TextEditor>();
             builder.RegisterType<SpellChecker>().As<ISpellChecker>();
             builder.RegisterType<CSharpSpellChecker>().As<ISpellChecker>().IfNotRegistered(typeof(ISpellChecker));
+            builder.RegisterType<FileStorage>().As<IStorage>();
 
             var container = builder.Build();
 

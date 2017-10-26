@@ -9,11 +9,12 @@ namespace AutofacDemo
     class TextEditor
     {
         private ISpellChecker _spellChecker;
+        private IStorage _storage;
 
-        public TextEditor(ISpellChecker spellChecker)
+        public TextEditor(ISpellChecker spellChecker, IStorage storage)
         {
-            this._spellChecker = spellChecker;
-
+           _spellChecker = spellChecker;
+           _storage = storage;
         }
     }
 }
