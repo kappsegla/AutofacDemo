@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Autofac;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,14 @@ namespace AutofacDemo
     {
         static void Main(string[] args)
         {
+           // var builder = new ContainerBuilder();
+
+           // builder.RegisterType<TextEditor>();
+           // builder.RegisterType<SpellChecker>().As<ISpellChecker>();
+
+      
+
+
         }
     }
 }
