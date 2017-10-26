@@ -13,11 +13,14 @@ namespace AutofacDemo
         {
             var builder = new ContainerBuilder();
             builder.RegisterType<TextEditor>();
-           
             builder.RegisterType<SpellChecker>().As<ISpellChecker>();
+            builder.RegisterType<CSharpSpellChecker>().As<ISpellChecker>().IfNotRegistered(typeof(ISpellChecker));
 
-            
+            var container = builder.Build();
 
+            TextEditor textEditor = container.Resolve<TextEditor>();
+
+            Console.Read();
       
 
 
