@@ -36,29 +36,31 @@ namespace AutofacDemo
 
   //          textEditor.M();
 
-            Console.Read();
+            Console.ReadLine();
+            Console.ReadLine();
         }
 
         public void Database()
         {
             using (var ctx = new DemoDataContext())
             {
-                ctx.Database.Log = Logger;
-                var students = ctx.Students.Where(f => f.Name == "Martin");
+                ctx.Database.Log = Console.Write;
+                var students = ctx.Students.Include("Courses").Where(r => r.Age == 0).ToList();
 
+                var count = students.Count();
+              //  Student student = null;
 
-                foreach(Student s in students){
+                foreach (Student s in students){
                     Console.WriteLine(s.Name);
-
+                    Console.WriteLine(s.Courses?.Count);
+                    Console.WriteLine("Wait for it....press a key");
+                    Console.Read();
                 }
+
+                Console.WriteLine("Wait for it....press a key");
+                Console.Read();
             }
         }
-
-        public void Logger(string value)
-        {
-            Console.Write(value);
-        }
-       
     }
 }
 

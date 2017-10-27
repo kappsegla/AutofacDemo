@@ -1,10 +1,9 @@
 namespace AutofacDemo.Migrations
 {
     using AutofacDemo.Model;
-    using System;
-    using System.Data.Entity;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<AutofacDemo.DataAccess.DemoDataContext>
     {
@@ -19,10 +18,27 @@ namespace AutofacDemo.Migrations
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
+
+            Model.Course course1 = new Model.Course { CourseName = "Windowsprogrammering" };
+            Model.Course course2 = new Model.Course { CourseName = "JavaProgrammering" };
+
+            context.Courses.AddOrUpdate(f => f.CourseName,
+                course1, course2);
+
+            Student student1 = new Student { Name = "Pelle", Courses = new List<Model.Course>()};
+            student1.Courses.Add(course1);
+
             context.Students.AddOrUpdate(f => f.Name,
-                new Student { Name= "Martin" },
+                student1,
                 new Student { Name = "Arne" },
                 new Student { Name = "Kalle" });
+
+
+
+
+                
+
+
         }
     }
 }
