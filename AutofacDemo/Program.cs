@@ -1,4 +1,6 @@
 ﻿using Autofac;
+using AutofacDemo.DataAccess;
+using AutofacDemo.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +23,7 @@ namespace AutofacDemo
 
             var container = builder.Build();
 
-            TextEditor textEditor = container.Resolve<TextEditor>();
+            //            TextEditor textEditor = container.Resolve<TextEditor>();
 
 
 
@@ -29,13 +31,35 @@ namespace AutofacDemo
 
             //ISpellChecker spellChecker2 = new SpellCheckerFactory().createSpellChecker();
 
+            Program p = new Program();
+            p.Database();
 
-            textEditor.M();
+  //          textEditor.M();
 
             Console.Read();
-      
-
-
         }
+
+        public void Database()
+        {
+            using (var ctx = new DemoDataContext())
+            {
+                ctx.Database.Log = Logger;
+                var students = ctx.Students.Where(f => f.Name == "Martin");
+
+
+                foreach(Student s in students){
+                    Console.WriteLine(s.Name);
+
+                }
+            }
+        }
+
+        public void Logger(string value)
+        {
+            Console.Write(value);
+        }
+       
     }
 }
+
+
